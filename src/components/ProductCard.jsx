@@ -95,20 +95,15 @@ const ProductCard = ({ product, index = 0 }) => {
           </div>
         </div>
 
-        {/* Mobile permanent action row */}
-        <div className="flex lg:hidden gap-2 mt-3">
-          <a
-            href={buildWhatsAppLink(product, { color: variant.color })}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 btn-whatsapp !py-2.5 !text-[10px]"
-          >
-            <IconWhatsApp className="w-4 h-4" /> Order
-          </a>
-          <Link to={`/product/${product.id}`} className="flex-1 btn-primary !py-2.5 !text-[10px]">
-            View <IconArrow className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+        {/* Mobile: only WhatsApp (the image already links to the product page) */}
+        <a
+          href={buildWhatsAppLink(product, { color: variant.color })}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex lg:hidden btn-whatsapp !py-2.5 !text-[10px] mt-3 w-full"
+        >
+          <IconWhatsApp className="w-4 h-4" /> Order on WhatsApp
+        </a>
       </div>
 
       {/* Meta */}

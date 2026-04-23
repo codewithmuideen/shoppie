@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx'
 import SearchOverlay from './components/SearchOverlay.jsx'
 import WhatsAppFAB from './components/WhatsAppFAB.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
+import InstallPrompt from './components/InstallPrompt.jsx'
 import ProtectedRoute from './components/admin/ProtectedRoute.jsx'
 
 import Home from './pages/Home.jsx'
@@ -55,6 +56,7 @@ const App = () => {
       {!isAdminRoute && <Footer />}
       {!isAdminRoute && <WhatsAppFAB />}
       <CookieBanner />
+      <InstallPrompt />
     </>
   )
 }
