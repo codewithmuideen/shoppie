@@ -2,8 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useProducts } from '../context/ProductContext.jsx'
 import ProductCard from '../components/ProductCard.jsx'
-import { IconArrow, IconHeart, IconWhatsApp, IconCheck } from '../components/Icons.jsx'
+import { IconArrow, IconHeart, IconWhatsApp, IconCheck, IconBag } from '../components/Icons.jsx'
 import { currency, buildWhatsAppLink } from '../utils/format.js'
+import { useCart } from '../context/CartContext.jsx'
 
 const Product = () => {
   const { id } = useParams()
@@ -16,6 +17,7 @@ const Product = () => {
   const [size, setSize] = useState(null)
   const [fav, setFav] = useState(false)
   const [toast, setToast] = useState('')
+  const { addItem } = useCart()
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -42,13 +44,23 @@ const Product = () => {
   const variant = product.variants?.[variantIdx] || { images: [] }
   const images = variant.images || []
 
-  const handleOrder = (e) => {
+  const requireSize = () => {
     if (!size && product.sizes?.length > 1) {
-      e.preventDefault()
       setToast('Please choose a size first.')
       setTimeout(() => setToast(''), 2500)
-      return
+      return false
     }
+    return true
+  }
+  const handleOrder = (e) => { if (!requireSize()) e.preventDefault() }
+  const handleAddToBag = () => {
+    if (!requireSize()) return
+    addItem(product, {
+      size: size || (product.sizes?.[0] === 'One Size' ? 'One Size' : null),
+      color: variant.color,
+      hex: variant.hex,
+      image: images[0]
+    })
   }
 
   return (
@@ -151,6 +163,13 @@ const Product = () => {
 
           {/* Actions */}
           <div className="mt-8 space-y-3">
+            <button
+              type="button"
+              onClick={handleAddToBag}
+              className="btn-primary w-full !py-4"
+            >
+              <IconBag className="w-5 h-5" /> Add to bag
+            </button>
             <a
               href={buildWhatsAppLink(product, { color: variant.color, size })}
               target="_blank"
@@ -158,12 +177,12 @@ const Product = () => {
               onClick={handleOrder}
               className="btn-whatsapp w-full !py-4"
             >
-              <IconWhatsApp className="w-5 h-5" /> Order via WhatsApp
+              <IconWhatsApp className="w-5 h-5" /> Order on WhatsApp
             </a>
             <div className="flex gap-3">
               <button
                 onClick={() => setFav((x) => !x)}
-                className={`btn-outline flex-1 !py-4 ${fav ? 'bg-plum-900 text-ivory-100 border-plum-900' : ''}`}
+                className={`btn-outline flex-1 !py-3 ${fav ? 'bg-plum-900 text-ivory-100 border-plum-900' : ''}`}
               >
                 <IconHeart className={`w-4 h-4 ${fav ? 'fill-current' : ''}`} />
                 {fav ? 'Saved' : 'Save'}

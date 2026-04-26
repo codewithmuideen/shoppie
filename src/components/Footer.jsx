@@ -142,7 +142,7 @@ const Footer = () => (
     <div className="border-t border-plum-700/60">
       <div className="container-luxe py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-ivory-200/60 tracking-wide">
         <p>© {new Date().getFullYear()} 0528creatives inc. All rights reserved.</p>
-        <p className="uppercase tracking-luxe text-[10px]">Made with intention · Lagos · London · Milan</p>
+        <p className="uppercase tracking-luxe text-[10px]">Made with intention · London · Milan · Paris</p>
       </div>
     </div>
   </footer>

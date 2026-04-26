@@ -4,19 +4,25 @@ import { useAdmin } from '../context/AdminContext.jsx'
 import { IconArrow } from '../components/Icons.jsx'
 
 const AdminLogin = () => {
-  const { isAdmin, login } = useAdmin()
+  const { isAdmin, login, isSupabaseConfigured } = useAdmin()
+  const [email, setEmail] = useState('')
   const [pwd, setPwd] = useState('')
   const [err, setErr] = useState('')
+  const [busy, setBusy] = useState(false)
   const nav = useNavigate()
 
   useEffect(() => { if (isAdmin) nav('/admin', { replace: true }) }, [isAdmin])
 
   if (isAdmin) return <Navigate to="/admin" replace />
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
-    const r = login(pwd)
-    if (!r.ok) setErr(r.error)
+    setErr(''); setBusy(true)
+    const r = isSupabaseConfigured
+      ? await login(email, pwd)
+      : await login(pwd)
+    setBusy(false)
+    if (!r.ok) setErr(r.error || 'Login failed')
     else nav('/admin')
   }
 
@@ -26,31 +32,45 @@ const AdminLogin = () => {
         <p className="eyebrow">Private Access</p>
         <h1 className="mt-2 font-display text-3xl text-plum-900">Atelier console</h1>
         <p className="mt-3 text-sm text-plum-600">
-          Enter the house passphrase to manage the collection.
+          {isSupabaseConfigured
+            ? 'Sign in with the admin account you set up in Supabase.'
+            : 'Enter the house passphrase to manage the collection.'}
         </p>
 
-        <div className="mt-8">
-          <label className="eyebrow text-plum-700" htmlFor="pwd">Passphrase</label>
+        {isSupabaseConfigured && (
+          <div className="mt-8">
+            <label className="eyebrow text-plum-700" htmlFor="email">Email</label>
+            <input
+              id="email" type="email" autoFocus required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-luxe mt-2" placeholder="admin@…" />
+          </div>
+        )}
+
+        <div className="mt-6">
+          <label className="eyebrow text-plum-700" htmlFor="pwd">
+            {isSupabaseConfigured ? 'Password' : 'Passphrase'}
+          </label>
           <input
-            id="pwd"
-            type="password"
-            autoFocus
+            id="pwd" type="password" required
+            autoFocus={!isSupabaseConfigured}
             value={pwd}
             onChange={(e) => { setPwd(e.target.value); setErr('') }}
-            className="input-luxe mt-2"
-            placeholder="••••••••"
-          />
+            className="input-luxe mt-2" placeholder="••••••••" />
           {err && <p className="mt-2 text-xs text-red-600">{err}</p>}
         </div>
 
-        <button type="submit" className="btn-primary w-full mt-8 group">
-          Enter console
+        <button type="submit" disabled={busy} className="btn-primary w-full mt-8 group disabled:opacity-60">
+          {busy ? 'Signing in…' : 'Enter console'}
           <IconArrow className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
         </button>
 
-        <p className="mt-6 text-[11px] text-plum-500">
-          Demo passphrase: <span className="font-mono text-plum-800">maison2026</span>
-        </p>
+        {!isSupabaseConfigured && (
+          <p className="mt-6 text-[11px] text-plum-500">
+            Demo passphrase: <span className="font-mono text-plum-800">maison2026</span>
+          </p>
+        )}
       </form>
     </div>
   )

@@ -89,7 +89,7 @@ const INFO = {
     body: [
       '0528creatives inc. is an independent house curating menswear, womenswear and kidswear from a tight roster of ateliers we trust.',
       'We exist so you can buy fewer, better things — and talk to a real person when you do.',
-      'Registered in London. Dispatch from London, Milan and Lagos.'
+      'Registered in London. Dispatch from London, Milan and Paris.'
     ]
   },
   'partner-boutiques': {

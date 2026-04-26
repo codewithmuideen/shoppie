@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useProducts } from '../context/ProductContext.jsx'
 import ProductCard from '../components/ProductCard.jsx'
 import HeroSlider from '../components/HeroSlider.jsx'
+import FeatureBanners from '../components/FeatureBanners.jsx'
 import { IconArrow, IconWhatsApp } from '../components/Icons.jsx'
 import { buildGeneralWhatsAppLink } from '../utils/format.js'
 
@@ -17,6 +18,9 @@ const Home = () => {
     <div className="animate-fade-in">
       {/* ============ HERO SLIDER ============ */}
       <HeroSlider />
+
+      {/* ============ FEATURE BANNERS (overlap hero bottom) ============ */}
+      <FeatureBanners />
 
       {/* ============ MARQUEE ============ */}
       <section className="bg-plum-800 text-ivory-100 py-5 overflow-hidden">

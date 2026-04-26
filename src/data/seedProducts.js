@@ -1,8 +1,32 @@
-// Seed catalogue. Used on first load, then merged with admin-uploaded products
-// stored in localStorage. Images pulled from Unsplash (free to use).
+// Seed catalogue. Used on first load when Supabase is not configured, then
+// merged with admin-uploaded products in localStorage. When Supabase env vars
+// are set, the data is pulled from / pushed to the cloud table instead.
+//
+// Image strategy:
+//  - L(name) → /assets in /public (webp from pixabay/local stock)
+//  - U(id)   → unsplash CDN (fallback for variety)
 
 const U = (id, w = 900) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
+
+// Local /public assets — paired files (front + alt view).
+const LOCAL = [
+  ['19147199_41833574_1000.webp', '19147199_41834567_1000.webp'],
+  ['23528599_63500795_1000.webp', '23528599_63632817_1000.webp'],
+  ['24319666_54330332_1000.webp', '24319666_54330334_1000.webp'],
+  ['30082036_59622591_1000.webp', '30082036_59622594_1000.webp'],
+  ['30214018_59482673_1000.webp', '30214018_59482686_1000.webp'],
+  ['31285090_60587969_1000.webp', '31285090_60587963_300.webp'],
+  ['31475999_62451406_1000.webp', '31475999_62451418_1000.webp'],
+  ['32485470_62556855_1000.webp', '32485470_62556886_1000.webp'],
+  ['32485523_62557557_1000.webp', '32485523_62627816_1000.webp'],
+  ['32529425_62761078_1000.webp', '32529425_62761093_1000.webp'],
+  ['33140723_64259327_1000.webp', '33140723_64259325_300.webp'],
+  ['35136952_67462164_1000.webp', '35136952_67462167_1000.webp'],
+  ['35658745_67113911_1000.webp', '35658745_67113912_1000.webp'],
+  ['35801564_67447942_1000.webp', '35801564_67448091_1000.webp']
+]
+const L = (i) => (LOCAL[i] || []).map((f) => `/${f}`)
 
 export const CLOTHING_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
 export const SHOE_SIZES_EU = ['39', '40', '41', '42', '43', '44', '45']
@@ -26,70 +50,63 @@ export const COLOR_PALETTE = [
   { name: 'Camel',    hex: '#b58a58' }
 ]
 
-// Helper — create a variant block
+// Variant helpers — Vlocal uses a paired index from LOCAL, V uses Unsplash IDs.
+const Vlocal = (color, hex, idx) => ({ color, hex, images: L(idx) })
 const V = (color, hex, ...ids) => ({ color, hex, images: ids.map((id) => U(id)) })
 
 // In-house labels use the 0528 prefix. Third-party labels stay varied.
-
 export const seedProducts = [
   // ============ MEN — Outerwear ============
   { id: 'm-001', name: 'Tailored Wool Overcoat', brand: '0528 Atelier', category: 'men', subcategory: 'outerwear',
     description: 'Sculpted single-breasted overcoat in Italian virgin wool. Half-canvassed, horn buttons.',
     price: 1280, sizeType: 'clothing', sizes: ['S','M','L','XL'],
-    variants: [V('Onyx','#111111','1591047139829-d91aecb6caea','1544022613-e87ca75a784a'),
-               V('Cognac','#8a4b2a','1594938298603-c8148c4dae35','1617137968427-85924c800a22')],
-    newIn: true, featured: true, createdAt: '2026-04-10' },
+    variants: [Vlocal('Onyx','#111111', 0), Vlocal('Cognac','#8a4b2a', 1)],
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-10' },
 
   { id: 'm-002', name: 'Belted Trench Coat', brand: 'Atelier Nord', category: 'men', subcategory: 'outerwear',
     description: 'Waxed cotton trench with storm shield and tonal belt.',
     price: 980, sizeType: 'clothing', sizes: ['S','M','L','XL'],
-    variants: [V('Camel','#b58a58','1539533113208-f6df8cc8b543','1620799140408-edc6dcb6d633'),
-               V('Onyx','#111111','1515562141207-7a88fb7ce338','1562157873-818bc0726f68')],
+    variants: [Vlocal('Camel','#b58a58', 2), Vlocal('Onyx','#111111', 3)],
     newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-19' },
 
   { id: 'm-003', name: 'Suede Field Jacket', brand: 'Corso Veneto', category: 'men', subcategory: 'outerwear',
     description: 'Hand-finished suede with four pockets and shearling collar.',
     price: 1450, sizeType: 'clothing', sizes: ['M','L','XL'],
-    variants: [V('Cognac','#8a4b2a','1516257984-b1b4d707412e','1620799140408-edc6dcb6d633')],
+    variants: [Vlocal('Cognac','#8a4b2a', 4)],
     newIn: false, bestSeller: true, createdAt: '2026-02-28' },
 
   // ============ MEN — Shirts ============
   { id: 'm-004', name: 'Silk-Blend Camp Shirt', brand: 'Atelier Nord', category: 'men', subcategory: 'shirts',
     description: 'Silk-cotton with camp collar and mother-of-pearl buttons.',
     price: 420, sizeType: 'clothing', sizes: ['S','M','L','XL'],
-    variants: [V('Ivory','#faf7f2','1603252109303-2751441dd157','1602810318383-e386cc2a3ccf'),
-               V('Navy','#1b2a4e','1516257984-b1b4d707412e','1598033129183-c4f50c736f10')],
+    variants: [Vlocal('Ivory','#faf7f2', 5), Vlocal('Navy','#1b2a4e', 6)],
     newIn: true, featured: true, createdAt: '2026-04-12' },
 
   { id: 'm-005', name: 'Crisp Poplin Shirt', brand: '0528 Atelier', category: 'men', subcategory: 'shirts',
     description: 'Long-staple cotton poplin, spread collar, double cuff.',
     price: 260, sizeType: 'clothing', sizes: ['S','M','L','XL'],
-    variants: [V('Ivory','#faf7f2','1602810318383-e386cc2a3ccf','1598971457999-ca4ef48a9a88'),
-               V('Plum','#2a1437','1603252109303-2751441dd157','1516257984-b1b4d707412e')],
+    variants: [Vlocal('Ivory','#faf7f2', 7), Vlocal('Plum','#2a1437', 8)],
     newIn: false, bestSeller: true, createdAt: '2026-03-30' },
 
   { id: 'm-006', name: 'Linen Overshirt', brand: 'Riva Moda', category: 'men', subcategory: 'shirts',
     description: 'Slubbed Italian linen in a relaxed overshirt cut.',
     price: 340, sizeType: 'clothing', sizes: ['S','M','L','XL'],
-    variants: [V('Sand','#c9b59a','1598971457999-ca4ef48a9a88','1603252109303-2751441dd157'),
-               V('Forest','#2f4a3a','1516257984-b1b4d707412e','1515562141207-7a88fb7ce338')],
-    newIn: true, bestSeller: true, featured: true, createdAt: '2026-04-21' },
+    variants: [Vlocal('Sand','#c9b59a', 9), Vlocal('Forest','#2f4a3a', 10)],
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-21' },
 
   // ============ MEN — Knitwear ============
   { id: 'm-007', name: 'Cashmere Crewneck', brand: '0528 Atelier', category: 'men', subcategory: 'knitwear',
     description: 'Ultra-fine Mongolian cashmere in a refined crew silhouette.',
     price: 520, sizeType: 'clothing', sizes: ['S','M','L','XL'],
-    variants: [V('Plum','#2a1437','1620799140408-edc6dcb6d633','1617137968427-85924c800a22'),
-               V('Sand','#c9b59a','1539109136881-3be0616acf4b','1516826957135-700dedea698c'),
-               V('Forest','#2f4a3a','1515562141207-7a88fb7ce338','1562157873-818bc0726f68')],
+    variants: [Vlocal('Plum','#2a1437', 11), Vlocal('Sand','#c9b59a', 12), Vlocal('Forest','#2f4a3a', 13)],
     newIn: false, bestSeller: true, createdAt: '2026-03-15' },
 
   { id: 'm-008', name: 'Ribbed Merino Polo', brand: 'Atelier Nord', category: 'men', subcategory: 'knitwear',
-    description: 'Fine-gauge merino, half-zip collar, a summer layering essential.',
+    description: 'Fine-gauge merino, half-zip collar.',
     price: 290, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [V('Ivory','#faf7f2','1516826957135-700dedea698c','1539109136881-3be0616acf4b'),
                V('Navy','#1b2a4e','1620799140408-edc6dcb6d633','1617137968427-85924c800a22')],
-    newIn: false, featured: true, createdAt: '2026-02-05' },
+    newIn: false, featured: true, bestSeller: true, createdAt: '2026-02-05' },
 
   // ============ MEN — Trousers & Denim ============
   { id: 'm-009', name: 'Pleated Wool Trouser', brand: 'Atelier Nord', category: 'men', subcategory: 'trousers',
@@ -140,7 +157,7 @@ export const seedProducts = [
     price: 1180, sizeType: 'clothing', sizes: ['One Size'],
     variants: [V('Cognac','#8a4b2a','1590874103328-eac38a683ce7','1548036328-c9fa89d128fa'),
                V('Onyx','#111111','1566150905458-1bf1fc113f0d','1584917865442-de89df76afd3')],
-    newIn: true, bestSeller: true, featured: true, createdAt: '2026-04-15' },
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-15' },
 
   { id: 'm-016', name: 'Cotton Boxer Briefs — Trio', brand: 'Riva Moda', category: 'men', subcategory: 'undies',
     description: 'Pima cotton boxer briefs. Set of three.',
@@ -157,14 +174,14 @@ export const seedProducts = [
                V('Crimson','#8a1c2b','1551232864-3f0890e580d9','1566479179817-c8e2d3a7b0e9')],
     newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-19' },
 
-  { id: 'w-002', name: 'Pleated Midi Skirt', brand: 'Rue Sainte', category: 'women', subcategory: 'dresses',
+  { id: 'w-002', name: 'Pleated Midi Skirt', brand: 'Rue Sainte', category: 'women', subcategory: 'skirts',
     description: 'Sunray-pleated satin midi with hand-finished waistband.',
     price: 580, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Gold','#c9a961','1583496661160-fb5886a0aaaa','1539533018447-63fcce2678e3'),
                V('Onyx','#111111','1509631179647-0177331693ae','1495121605193-b116b5b9c5fe')],
-    newIn: true, bestSeller: true, featured: true, createdAt: '2026-04-20' },
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-20' },
 
-  { id: 'w-003', name: 'Silk Camisole', brand: 'Rue Sainte', category: 'women', subcategory: 'dresses',
+  { id: 'w-003', name: 'Silk Camisole', brand: 'Rue Sainte', category: 'women', subcategory: 'tops',
     description: 'Featherweight silk camisole with lace trim.',
     price: 240, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Blush','#e8c9c6','1520975916090-3105956dac38','1581338834647-b0fb40704e21'),
@@ -243,7 +260,7 @@ export const seedProducts = [
     price: 690, sizeType: 'shoes', sizes: ['36','37','38','39','40','41'],
     variants: [V('Onyx','#111111','1533867617858-e7b97e060509','1520639888713-7851133b1ed0'),
                V('Cognac','#8a4b2a','1614252235316-8c857d38b5f4','1449505278894-297fdb3edbc1')],
-    newIn: false, bestSeller: true, featured: true, createdAt: '2026-01-28' },
+    newIn: false, featured: true, bestSeller: true, createdAt: '2026-01-28' },
 
   // ============ WOMEN — Bags ============
   { id: 'w-014', name: 'Monogram Leather Tote', brand: '0528 Atelier', category: 'women', subcategory: 'bags',
@@ -266,7 +283,7 @@ export const seedProducts = [
     price: 320, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Ivory','#faf7f2','1566479179817-c8e2d3a7b0e9','1520975916090-3105956dac38'),
                V('Onyx','#111111','1573865526739-10c1d3bc8196','1581338834647-b0fb40704e21')],
-    newIn: true, createdAt: '2026-04-17' },
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-17' },
 
   // ============ KIDS ============
   { id: 'k-001', name: 'Cotton Smocked Dress', brand: '0528 Petite', category: 'kids', subcategory: 'dresses',
@@ -316,7 +333,7 @@ export const seedProducts = [
     price: 95, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Ivory','#faf7f2','1519689373023-dd07c7988603','1518831959646-742c3a14ebf7'),
                V('Navy','#1b2a4e','1519238263530-99bdd11df2ea','1553395572-0ef353a212bc')],
-    newIn: false, createdAt: '2026-02-15' },
+    newIn: false, bestSeller: true, createdAt: '2026-02-15' },
 
   { id: 'k-008', name: 'Stone Washed Kids Jean', brand: 'Corso Piccolo', category: 'kids', subcategory: 'jeans',
     description: 'Soft stretch denim with elasticated back waistband.',
@@ -332,7 +349,7 @@ export const seedProducts = [
                V('Forest','#2f4a3a','1503454537195-1dcabb73ffb9','1519689680058-324335c77eba')],
     newIn: false, createdAt: '2026-01-22' },
 
-  { id: 'k-010', name: 'Striped Breton Tee', brand: 'Riva Piccola', category: 'kids', subcategory: 'shirts',
+  { id: 'k-010', name: 'Striped Breton Tee', brand: 'Riva Piccola', category: 'kids', subcategory: 'tops',
     description: 'Heavyweight cotton Breton stripe tee.',
     price: 75, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Ivory','#faf7f2','1519689373023-dd07c7988603','1514090458221-65bb69cf1e6d'),
@@ -351,7 +368,7 @@ export const seedProducts = [
     price: 130, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Plum','#2a1437','1519689680058-324335c77eba','1553395572-0ef353a212bc'),
                V('Dove','#d7d3cd','1503454537195-1dcabb73ffb9','1519238263530-99bdd11df2ea')],
-    newIn: true, bestSeller: true, featured: true, createdAt: '2026-04-16' },
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-16' },
 
   { id: 'k-013', name: 'Leather Sandal', brand: 'Corso Piccolo', category: 'kids', subcategory: 'shoes',
     description: 'Hand-stitched leather sandal with cushioned footbed.',
@@ -363,7 +380,7 @@ export const seedProducts = [
     description: 'Washed linen shirt for special occasions.',
     price: 110, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Ivory','#faf7f2','1519689373023-dd07c7988603','1518831959646-742c3a14ebf7')],
-    newIn: true, bestSeller: true, featured: true, createdAt: '2026-04-12' },
+    newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-12' },
 
   { id: 'k-015', name: 'Cotton Underwear Set', brand: 'Riva Piccola', category: 'kids', subcategory: 'undies',
     description: 'Pima cotton underwear set of five, assorted.',

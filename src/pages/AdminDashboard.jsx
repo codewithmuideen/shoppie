@@ -7,8 +7,9 @@ import { IconPlus, IconEdit, IconTrash, IconLogout, IconSearch, IconClose } from
 import { currency } from '../utils/format.js'
 
 const AdminDashboard = () => {
-  const { logout } = useAdmin()
-  const { products, addProduct, updateProduct, deleteProduct, resetToSeed } = useProducts()
+  const { logout, isSupabaseConfigured } = useAdmin()
+  const { products, addProduct, updateProduct, deleteProduct, resetToSeed,
+          importSeed, needsSeedImport } = useProducts()
   const nav = useNavigate()
 
   const [mode, setMode] = useState('list') // 'list' | 'new' | 'edit'
@@ -61,6 +62,22 @@ const AdminDashboard = () => {
             <IconLogout className="w-4 h-4" /> Sign out
           </button>
         </div>
+      </div>
+
+      {/* Backend status + seed import */}
+      <div className="mb-6 flex flex-wrap items-center gap-3 text-xs">
+        <span className={`inline-flex items-center gap-2 px-3 py-1.5 border ${isSupabaseConfigured ? 'border-emerald-700/40 bg-emerald-50 text-emerald-800' : 'border-amber-600/40 bg-amber-50 text-amber-800'}`}>
+          <span className={`inline-block w-1.5 h-1.5 rounded-full ${isSupabaseConfigured ? 'bg-emerald-600' : 'bg-amber-600'}`} />
+          <span className="uppercase tracking-luxe">{isSupabaseConfigured ? 'Supabase live · realtime sync on' : 'Local mode · localStorage only'}</span>
+        </span>
+        {needsSeedImport && (
+          <button
+            onClick={() => importSeed()}
+            className="inline-flex items-center gap-2 border border-plum-300 bg-ivory-50 px-3 py-1.5 text-plum-800 hover:border-plum-900 hover:bg-plum-900 hover:text-ivory-100 transition-colors uppercase tracking-luxe"
+          >
+            Import seed catalogue → Supabase
+          </button>
+        )}
       </div>
 
       {/* Stats */}

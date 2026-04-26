@@ -3,78 +3,73 @@ import { Link } from 'react-router-dom'
 import { IconArrow, IconWhatsApp } from './Icons.jsx'
 import { buildGeneralWhatsAppLink } from '../utils/format.js'
 
-const U = (id, w = 1800) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
+const U = (id, w = 2000) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=85`
 
+// Six cinematic, moody slides. Product-first imagery. Centered composition.
 const slides = [
   {
-    key: 'spring',
-    eyebrow: 'Womenswear',
-    title: ['A wardrobe,', 'quietly considered.'],
-    accent: 'quietly considered.',
-    sub: 'Independent ateliers and heritage labels — pieces worth keeping.',
+    key: 'sneakers',
+    mark: 'The Sneaker Edit',
+    title: ['The Onyx', 'Pack.'],
+    accent: 'Pack.',
+    sub: 'Italian-made court sneakers, suede runners, nappa platforms — reworked in the house onyx palette.',
+    cta: { to: '/men', label: 'Discover' },
+    image: U('1608667508764-33cf0726b13a'),
+    focal: 'center 40%'
+  },
+  {
+    key: 'leather',
+    mark: 'Crafted Leather',
+    title: ['Bags, built', 'to outlast seasons.'],
+    accent: 'to outlast seasons.',
+    sub: 'Vegetable-tanned calfskin, brass hardware, hand-finished edges — from Milan and Florence.',
+    cta: { to: '/women', label: 'Shop Bags' },
+    image: U('1590874103328-eac38a683ce7'),
+    focal: '60% 50%'
+  },
+  {
+    key: 'women',
+    mark: 'Womenswear',
+    title: ['Eveningwear,', 'quietly cut.'],
+    accent: 'quietly cut.',
+    sub: 'Draped silk, structured tailoring and the pieces that carry a room without shouting.',
     cta: { to: '/women', label: 'Shop Women' },
-    image: U('1490481651871-ab68de25d43d'),
-    align: 'left',
-    overlay: 'from-plum-900/75 via-plum-900/30 to-transparent'
+    image: U('1539533018447-63fcce2678e3'),
+    focal: '50% 30%'
   },
   {
     key: 'men',
-    eyebrow: 'Menswear',
-    title: ['Tailored for him,', 'made to last.'],
-    accent: 'made to last.',
-    sub: 'Italian wool, selvedge denim, Goodyear-welted leather.',
+    mark: 'Menswear',
+    title: ['Tailored', 'for him.'],
+    accent: 'for him.',
+    sub: 'Italian wool, selvedge denim, Goodyear-welted leather. The foundations of a quieter wardrobe.',
     cta: { to: '/men', label: 'Shop Men' },
     image: U('1617137968427-85924c800a22'),
-    align: 'right',
-    overlay: 'from-transparent via-plum-900/20 to-plum-900/80'
+    focal: '50% 40%'
   },
   {
     key: 'new',
-    eyebrow: 'Just Arrived',
+    mark: 'Just Arrived',
     title: ['New in', 'this week.'],
     accent: 'this week.',
-    sub: 'Fresh additions across tailoring, knitwear, shoes and bags.',
+    sub: 'Fresh from the ateliers — tailoring, knitwear, shoes and bags.',
     cta: { to: '/new-in', label: 'Shop New In' },
-    image: U('1539533018447-63fcce2678e3'),
-    align: 'left',
-    overlay: 'from-plum-900/70 via-plum-900/25 to-transparent'
-  },
-  {
-    key: 'sneakers',
-    eyebrow: 'The Sneaker Capsule',
-    title: ['Nappa leather,', 'quiet soles.'],
-    accent: 'quiet soles.',
-    sub: 'Italian-made court sneakers, suede runners and platforms.',
-    cta: { to: '/men', label: 'Shop Sneakers' },
-    image: U('1600185365926-3a2ce3cdb9eb'),
-    align: 'right',
-    overlay: 'from-transparent via-plum-900/30 to-plum-900/85'
+    image: U('1515562141207-7a88fb7ce338'),
+    focal: '50% 50%'
   },
   {
     key: 'kids',
-    eyebrow: 'Kidswear',
-    title: ['Petite pieces,', 'made to pass on.'],
-    accent: 'made to pass on.',
-    sub: 'Hand-smocked cotton, brushed cashmere, soft leather.',
+    mark: 'Petite Pieces',
+    title: ['Small details,', 'long lives.'],
+    accent: 'long lives.',
+    sub: 'Heirloom cotton, brushed cashmere, soft leather — made to pass on.',
     cta: { to: '/kids', label: 'Shop Kids' },
     image: U('1503944583220-79d8926ad5e2'),
-    align: 'left',
-    overlay: 'from-plum-900/75 via-plum-900/30 to-transparent'
-  },
-  {
-    key: 'bags',
-    eyebrow: 'Heritage Bags',
-    title: ['Leather, built', 'to outlast seasons.'],
-    accent: 'to outlast seasons.',
-    sub: 'Hand-finished totes, quilted shoulders and weekenders.',
-    cta: { to: '/women', label: 'Shop Bags' },
-    image: U('1584917865442-de89df76afd3'),
-    align: 'right',
-    overlay: 'from-transparent via-plum-900/20 to-plum-900/80'
+    focal: '50% 35%'
   }
 ]
 
-const DURATION = 7000
+const DURATION = 7500
 
 const HeroSlider = () => {
   const [active, setActive] = useState(0)
@@ -95,7 +90,7 @@ const HeroSlider = () => {
 
   return (
     <section
-      className="relative h-[92vh] min-h-[600px] max-h-[900px] overflow-hidden bg-plum-900"
+      className="relative h-[95vh] min-h-[640px] max-h-[920px] overflow-hidden bg-[#0a0610] select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
@@ -106,112 +101,128 @@ const HeroSlider = () => {
         return (
           <div
             key={s.key}
-            className={`absolute inset-0 transition-opacity duration-[1400ms] ease-silk ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 transition-opacity duration-[1400ms] ease-silk ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
             aria-hidden={!isActive}
           >
-            {/* Image with Ken Burns */}
+            {/* Image — Ken Burns, subtle parallax */}
             <img
               src={s.image}
               alt=""
               className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[12000ms] ease-out
-                          ${isActive ? 'scale-110' : 'scale-100'}`}
-              style={{ transformOrigin: s.align === 'left' ? '70% 50%' : '30% 50%' }}
+                          ${isActive ? 'scale-[1.12]' : 'scale-100'}`}
+              style={{ objectPosition: s.focal }}
             />
-            <div className={`absolute inset-0 bg-gradient-to-r ${s.overlay}`} />
-            <div className="absolute inset-0 bg-gradient-to-t from-plum-900/40 to-transparent" />
-
-            {/* Copy */}
-            <div className="relative container-luxe h-full flex items-end md:items-center pb-20 md:pb-0">
-              <div className={`max-w-2xl text-ivory-50 ${s.align === 'right' ? 'md:ml-auto md:text-right' : ''}`}>
-                <p className={`eyebrow text-gold-400 transition-all duration-700 ease-silk
-                               ${isActive ? 'opacity-100 translate-y-0 delay-[300ms]' : 'opacity-0 translate-y-4'}`}>
-                  {s.eyebrow}
-                </p>
-                <h1 className={`mt-4 font-display font-medium text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance
-                               transition-all duration-[900ms] ease-silk
-                               ${isActive ? 'opacity-100 translate-y-0 delay-[450ms]' : 'opacity-0 translate-y-6'}`}>
-                  {s.title[0]}<br/>
-                  <span className="italic text-gold-400">{s.title[1]}</span>
-                </h1>
-                <p className={`mt-6 text-base md:text-lg text-ivory-200/90 max-w-lg leading-relaxed
-                               ${s.align === 'right' ? 'md:ml-auto' : ''}
-                               transition-all duration-700 ease-silk
-                               ${isActive ? 'opacity-100 translate-y-0 delay-[650ms]' : 'opacity-0 translate-y-4'}`}>
-                  {s.sub}
-                </p>
-                <div className={`mt-8 flex flex-wrap gap-3 ${s.align === 'right' ? 'md:justify-end' : ''}
-                               transition-all duration-700 ease-silk
-                               ${isActive ? 'opacity-100 translate-y-0 delay-[850ms]' : 'opacity-0 translate-y-4'}`}>
-                  <Link to={s.cta.to} className="btn-gold group">
-                    {s.cta.label}
-                    <IconArrow className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </Link>
-                  <a href={buildGeneralWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-                    <IconWhatsApp className="w-4 h-4" /> WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
+            {/* Overlays: darkening + radial vignette + subtle grain */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0610]/80 via-[#0a0610]/45 to-[#0a0610]/85" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'radial-gradient(ellipse at center, transparent 0%, transparent 45%, rgba(10,6,16,0.65) 100%)'
+              }}
+            />
           </div>
         )
       })}
 
-      {/* Arrows */}
+      {/* Content — one centered stack, crossfades with active slide */}
+      <div className="relative z-20 h-full flex items-center justify-center px-5">
+        <div className="max-w-3xl text-center text-ivory-50">
+          {slides.map((s, i) => {
+            const isActive = i === active
+            return (
+              <div
+                key={s.key}
+                className={`transition-all duration-1000 ease-silk
+                           ${isActive ? 'opacity-100 translate-y-0 relative' : 'opacity-0 translate-y-4 absolute inset-0 pointer-events-none'}`}
+                aria-hidden={!isActive}
+              >
+                {/* Brand mark: logo + accent rule, echoing the Puma reference */}
+                <div className={`flex flex-col items-center gap-4 transition-all duration-700 ease-silk
+                                ${isActive ? 'opacity-100 translate-y-0 delay-[250ms]' : 'opacity-0 -translate-y-2'}`}>
+                  <img src="/logo.png" alt="" className="h-8 md:h-10 w-auto opacity-95" />
+                  <span className="block h-px w-10 bg-gold-500" />
+                  <span className="text-[11px] md:text-xs uppercase tracking-luxe text-ivory-50/85">
+                    {s.mark}
+                  </span>
+                </div>
+
+                {/* Headline */}
+                <h1 className={`mt-8 font-display font-medium text-[44px] leading-[1.02] md:text-7xl lg:text-[84px] text-balance
+                               transition-all duration-[1100ms] ease-silk
+                               ${isActive ? 'opacity-100 translate-y-0 delay-[450ms]' : 'opacity-0 translate-y-8'}`}>
+                  {s.title[0]}<br/>
+                  <span className="italic text-gold-400">{s.title[1]}</span>
+                </h1>
+
+                <p className={`mt-5 md:mt-7 max-w-xl mx-auto text-[15px] md:text-base text-ivory-100/80 leading-relaxed
+                               transition-all duration-700 ease-silk
+                               ${isActive ? 'opacity-100 translate-y-0 delay-[650ms]' : 'opacity-0 translate-y-4'}`}>
+                  {s.sub}
+                </p>
+
+                {/* Outlined CTA row, centered */}
+                <div className={`mt-9 md:mt-10 flex flex-wrap items-center justify-center gap-3
+                               transition-all duration-700 ease-silk
+                               ${isActive ? 'opacity-100 translate-y-0 delay-[850ms]' : 'opacity-0 translate-y-4'}`}>
+                  <Link
+                    to={s.cta.to}
+                    className="group inline-flex items-center gap-3 border border-ivory-50/80 px-8 py-3.5 text-[11px] uppercase tracking-luxe text-ivory-50 hover:bg-ivory-50 hover:text-plum-900 transition-all duration-500"
+                  >
+                    {s.cta.label}
+                    <IconArrow className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                  </Link>
+                  <a
+                    href={buildGeneralWhatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-luxe text-ivory-50/85 hover:text-gold-400 transition-colors px-3 py-2"
+                  >
+                    <IconWhatsApp className="w-4 h-4" /> or WhatsApp
+                  </a>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Arrows — minimal, edge-aligned */}
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="hidden md:grid absolute left-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 place-items-center bg-ivory-50/15 hover:bg-ivory-50 hover:text-plum-900 text-ivory-50 backdrop-blur-sm border border-ivory-50/30 transition-all duration-500"
+        className="hidden md:grid absolute left-5 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 place-items-center text-ivory-50/70 hover:text-ivory-50 border border-ivory-50/20 hover:border-ivory-50/70 transition-all duration-500"
       >
         <IconArrow className="w-4 h-4 rotate-180" />
       </button>
       <button
         onClick={next}
         aria-label="Next slide"
-        className="hidden md:grid absolute right-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 place-items-center bg-ivory-50/15 hover:bg-ivory-50 hover:text-plum-900 text-ivory-50 backdrop-blur-sm border border-ivory-50/30 transition-all duration-500"
+        className="hidden md:grid absolute right-5 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 place-items-center text-ivory-50/70 hover:text-ivory-50 border border-ivory-50/20 hover:border-ivory-50/70 transition-all duration-500"
       >
         <IconArrow className="w-4 h-4" />
       </button>
 
-      {/* Indicator rail */}
-      <div className="absolute left-0 right-0 bottom-6 md:bottom-8 z-20">
-        <div className="container-luxe flex items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            {slides.map((s, i) => (
-              <button
-                key={s.key}
-                onClick={() => go(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className="group flex items-center"
-              >
-                <span className={`block h-px bg-ivory-50/40 transition-all duration-500 ease-silk relative overflow-hidden
-                                  ${i === active ? 'w-14 md:w-20' : 'w-6 md:w-10 group-hover:bg-ivory-50/80'}`}>
-                  {i === active && !paused && (
-                    <span
-                      key={active}
-                      className="absolute inset-y-0 left-0 bg-gold-400"
-                      style={{ animation: `hero-progress ${DURATION}ms linear forwards` }}
-                    />
-                  )}
-                  {i === active && paused && (
-                    <span className="absolute inset-0 bg-gold-400" />
-                  )}
-                </span>
-              </button>
-            ))}
-          </div>
-          <span className="text-[10px] uppercase tracking-luxe text-ivory-50/70">
-            {String(active + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
-          </span>
+      {/* Dot pagination — thin ring, fills to gold when active */}
+      <div className="absolute inset-x-0 bottom-8 md:bottom-10 z-30 flex justify-center">
+        <div className="flex items-center gap-2.5">
+          {slides.map((s, i) => (
+            <button
+              key={s.key}
+              onClick={() => go(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="group p-1.5"
+            >
+              <span
+                className={`block rounded-full transition-all duration-500 ease-silk
+                            ${i === active
+                              ? 'w-2.5 h-2.5 bg-gold-400 ring-1 ring-offset-2 ring-offset-transparent ring-gold-400/60'
+                              : 'w-2 h-2 bg-ivory-50/30 group-hover:bg-ivory-50/70'}`}
+              />
+            </button>
+          ))}
         </div>
       </div>
-
-      {/* Inline keyframes for progress bar so we don't touch tailwind config again */}
-      <style>{`
-        @keyframes hero-progress {
-          from { width: 0%; }
-          to   { width: 100%; }
-        }
-      `}</style>
     </section>
   )
 }

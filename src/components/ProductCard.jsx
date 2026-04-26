@@ -1,22 +1,33 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IconHeart, IconWhatsApp, IconArrow } from './Icons.jsx'
+import { IconHeart, IconWhatsApp, IconBag } from './Icons.jsx'
 import { currency, buildWhatsAppLink } from '../utils/format.js'
+import { useCart } from '../context/CartContext.jsx'
 
 const ProductCard = ({ product, index = 0 }) => {
   const [variantIdx, setVariantIdx] = useState(0)
   const [fav, setFav] = useState(false)
+  const { addItem } = useCart()
 
   const variant = product.variants?.[variantIdx] || { images: [] }
   const primary = variant.images?.[0]
   const secondary = variant.images?.[1] || variant.images?.[0]
+
+  const handleAdd = (e) => {
+    e.preventDefault(); e.stopPropagation()
+    addItem(product, {
+      color: variant.color,
+      hex: variant.hex,
+      image: primary,
+      // size selection happens on the product page
+    })
+  }
 
   return (
     <article
       className="group relative animate-slide-up"
       style={{ animationDelay: `${Math.min(index, 12) * 40}ms`, animationFillMode: 'both' }}
     >
-      {/* Image — entire image area links to detail */}
       <Link
         to={`/product/${product.id}`}
         aria-label={`View ${product.name}`}
@@ -42,10 +53,8 @@ const ProductCard = ({ product, index = 0 }) => {
           />
         )}
 
-        {/* Gradient wash on hover (desktop) */}
         <div className="absolute inset-0 bg-gradient-to-t from-plum-900/40 via-transparent to-transparent opacity-0 lg:group-hover:opacity-100 transition-opacity duration-700" />
 
-        {/* Top-left badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {product.newIn && (
             <span className="bg-ivory-50 text-plum-900 text-[9px] uppercase tracking-luxe px-2.5 py-1 shadow-sm">
@@ -59,7 +68,6 @@ const ProductCard = ({ product, index = 0 }) => {
           )}
         </div>
 
-        {/* Wishlist — prevent parent-link navigation */}
         <button
           type="button"
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); setFav((f) => !f) }}
@@ -71,42 +79,52 @@ const ProductCard = ({ product, index = 0 }) => {
         </button>
       </Link>
 
-      {/* Actions — mobile: always visible pinned under image. desktop: slide-up on hover. */}
       <div className="relative">
-        {/* Desktop slide-up overlay (absolute over bottom of image) */}
+        {/* Desktop slide-up overlay */}
         <div className="hidden lg:block absolute left-3 right-3 -top-14 translate-y-4 opacity-0 transition-all duration-500 ease-silk
                         group-hover:translate-y-0 group-hover:opacity-100 z-10">
           <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={handleAdd}
+              className="flex-1 btn-primary !py-3 !text-[10px]"
+            >
+              <IconBag className="w-4 h-4" /> Add to bag
+            </button>
             <a
               href={buildWhatsAppLink(product, { color: variant.color })}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex-1 btn-whatsapp !py-3 !text-[10px]"
+              className="btn-whatsapp !py-3 !px-4"
+              aria-label="Order on WhatsApp"
             >
-              <IconWhatsApp className="w-4 h-4" /> Order
+              <IconWhatsApp className="w-4 h-4" />
             </a>
-            <Link
-              to={`/product/${product.id}`}
-              className="flex-1 btn-primary !py-3 !text-[10px] group/btn"
-            >
-              View <IconArrow className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
-            </Link>
           </div>
         </div>
 
-        {/* Mobile: only WhatsApp (the image already links to the product page) */}
-        <a
-          href={buildWhatsAppLink(product, { color: variant.color })}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex lg:hidden btn-whatsapp !py-2.5 !text-[10px] mt-3 w-full"
-        >
-          <IconWhatsApp className="w-4 h-4" /> Order on WhatsApp
-        </a>
+        {/* Mobile: Add to bag (primary) + WhatsApp icon */}
+        <div className="flex lg:hidden gap-2 mt-3">
+          <button
+            type="button"
+            onClick={handleAdd}
+            className="flex-1 btn-primary !py-2.5 !text-[10px]"
+          >
+            <IconBag className="w-4 h-4" /> Add to bag
+          </button>
+          <a
+            href={buildWhatsAppLink(product, { color: variant.color })}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-whatsapp !py-2.5 !px-3"
+            aria-label="Order on WhatsApp"
+          >
+            <IconWhatsApp className="w-4 h-4" />
+          </a>
+        </div>
       </div>
 
-      {/* Meta */}
       <Link to={`/product/${product.id}`} className="block pt-3 pb-2">
         <p className="eyebrow text-plum-500">{product.brand}</p>
         <h3 className="mt-1 text-[15px] font-medium text-plum-900 tracking-wide leading-snug line-clamp-1 group-hover:text-gold-700 transition-colors duration-500">

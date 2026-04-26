@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { IconPlus, IconTrash, IconUpload, IconClose, IconCheck } from '../Icons.jsx'
 import { CLOTHING_SIZES, SHOE_SIZES_EU, KID_SIZES, COLOR_PALETTE } from '../../data/seedProducts.js'
+import { supabase, isSupabaseConfigured, PRODUCT_BUCKET } from '../../lib/supabase.js'
 
 const blank = () => ({
   name: '',
@@ -74,6 +75,25 @@ const ProductForm = ({ initial, onSave, onCancel }) => {
 
   const onImageUpload = async (i, files) => {
     const list = Array.from(files).slice(0, 6)
+
+    // Supabase Storage path → public URL
+    if (isSupabaseConfigured) {
+      const uploaded = []
+      for (const file of list) {
+        const ext = file.name.split('.').pop() || 'jpg'
+        const path = `${p.id || 'new'}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`
+        const { error } = await supabase.storage
+          .from(PRODUCT_BUCKET)
+          .upload(path, file, { cacheControl: '31536000', upsert: false })
+        if (error) { console.error(error); continue }
+        const { data } = supabase.storage.from(PRODUCT_BUCKET).getPublicUrl(path)
+        uploaded.push(data.publicUrl)
+      }
+      updateVariant(i, { images: [...(p.variants[i].images || []), ...uploaded] })
+      return
+    }
+
+    // Fallback: base64 in localStorage (single-device only)
     const urls = await Promise.all(list.map(fileToDataURL))
     updateVariant(i, { images: [...(p.variants[i].images || []), ...urls] })
   }

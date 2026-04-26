@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { IconSearch, IconMenu, IconClose, IconUser } from './Icons.jsx'
+import { IconSearch, IconMenu, IconClose, IconUser, IconBag } from './Icons.jsx'
 import { useUI } from '../context/UIContext.jsx'
 import { useAdmin } from '../context/AdminContext.jsx'
-
-const links = [
-  { to: '/women',  label: 'Women' },
-  { to: '/men',    label: 'Men' },
-  { to: '/kids',   label: 'Kids' },
-  { to: '/new-in', label: 'New In' }
-]
+import { useCart } from '../context/CartContext.jsx'
+import { MEGA_NAV } from '../data/megaNav.js'
+import MegaMenu from './MegaMenu.jsx'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const { openSearch, menuOpen, openMenu, closeMenu } = useUI()
   const { isAdmin } = useAdmin()
+  const { count, openDrawer } = useCart()
   const location = useLocation()
 
   useEffect(() => {
@@ -31,7 +28,7 @@ const Navbar = () => {
       <header className={`sticky top-0 z-40 transition-all duration-500 ease-silk ${
         scrolled ? 'bg-ivory-50/95 backdrop-blur-lg shadow-soft' : 'bg-ivory-100'
       }`}>
-        <div className="container-luxe flex items-center justify-between py-4 md:py-5">
+        <div className="container-luxe flex items-center justify-between gap-4 py-3 md:py-4">
           {/* Left — menu (mobile) + search (desktop) */}
           <div className="flex items-center gap-5 flex-1">
             <button
@@ -39,7 +36,7 @@ const Navbar = () => {
               className="lg:hidden text-plum-900 hover:text-gold-600 transition-colors"
               onClick={openMenu}
             >
-              <IconMenu className="w-6 h-6" />
+              <IconMenu className="w-7 h-7" />
             </button>
             <button
               aria-label="Open search"
@@ -51,15 +48,15 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group" aria-label="0528creatives inc.">
+          {/* Logo — bigger, centered */}
+          <Link to="/" className="flex items-center gap-3 group" aria-label="0528creatives inc.">
             <img
               src="/logo.png"
               alt="0528creatives inc."
-              className="h-9 md:h-11 w-auto transition-transform duration-500 group-hover:scale-[1.03]"
+              className="h-14 sm:h-16 md:h-20 w-auto transition-transform duration-500 group-hover:scale-[1.04]"
             />
-            <span className="hidden sm:flex flex-col leading-none">
-              <span className="font-display text-lg md:text-xl font-medium text-plum-900 tracking-wide">
+            <span className="hidden md:flex flex-col leading-none">
+              <span className="font-display text-xl lg:text-2xl font-medium text-plum-900 tracking-wide">
                 0528creatives
               </span>
               <span className="text-[9px] uppercase tracking-luxe text-plum-500 mt-1">
@@ -68,8 +65,8 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Right — admin + mobile search */}
-          <div className="flex items-center gap-5 flex-1 justify-end">
+          {/* Right — admin + search (mobile) + bag */}
+          <div className="flex items-center gap-4 md:gap-5 flex-1 justify-end">
             <button
               aria-label="Open search"
               onClick={openSearch}
@@ -83,36 +80,27 @@ const Navbar = () => {
               aria-label="Admin"
             >
               <IconUser className="w-5 h-5" />
-              <span className="hidden md:inline text-[11px] uppercase tracking-luxe link-underline">
+              <span className="hidden xl:inline text-[11px] uppercase tracking-luxe link-underline">
                 {isAdmin ? 'Dashboard' : 'Admin'}
               </span>
             </Link>
+            <button
+              onClick={openDrawer}
+              aria-label={`Open bag (${count} items)`}
+              className="relative text-plum-900 hover:text-gold-600 transition-colors"
+            >
+              <IconBag className="w-6 h-6 md:w-7 md:h-7" />
+              {count > 0 && (
+                <span className="absolute -top-1 -right-2 min-w-[18px] h-[18px] px-1 grid place-items-center bg-plum-900 text-ivory-50 text-[10px] rounded-full font-medium">
+                  {count}
+                </span>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:block border-t border-plum-100">
-          <div className="container-luxe">
-            <ul className="flex items-center justify-center gap-10 py-4">
-              {links.map((l) => (
-                <li key={l.to}>
-                  <NavLink
-                    to={l.to}
-                    className={({ isActive }) =>
-                      `relative text-[11px] uppercase tracking-luxe py-1 transition-colors duration-300
-                       ${isActive ? 'text-plum-900' : 'text-plum-600 hover:text-plum-900'}
-                       after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-px after:bg-gold-500
-                       after:transition-all after:duration-500 after:ease-silk
-                       ${isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full'}`
-                    }
-                  >
-                    {l.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
+        {/* Mega menu */}
+        <MegaMenu />
       </header>
 
       {/* Mobile drawer */}
@@ -121,33 +109,29 @@ const Navbar = () => {
           className={`absolute inset-0 bg-plum-900/60 backdrop-blur-sm transition-opacity duration-500 ${menuOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={closeMenu}
         />
-        <aside className={`absolute left-0 top-0 h-full w-[85%] max-w-sm bg-ivory-50 shadow-2xl transition-transform duration-500 ease-silk flex flex-col ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <aside className={`absolute left-0 top-0 h-full w-[88%] max-w-sm bg-ivory-50 shadow-2xl transition-transform duration-500 ease-silk flex flex-col ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="flex items-center justify-between p-5 border-b border-plum-100">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="" className="h-8 w-auto" />
+            <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
+              <img src="/logo.png" alt="" className="h-10 w-auto" />
               <span className="font-display text-lg text-plum-900">0528creatives</span>
-            </div>
+            </Link>
             <button onClick={closeMenu} aria-label="Close menu" className="text-plum-700 hover:text-plum-900">
               <IconClose className="w-6 h-6" />
             </button>
           </div>
-          <ul className="p-5 space-y-1 flex-1">
-            {links.map((l) => (
-              <li key={l.to}>
+          <ul className="flex-1 overflow-y-auto py-3">
+            {MEGA_NAV.map((item) => (
+              <li key={item.label} className="border-b border-plum-100">
                 <NavLink
-                  to={l.to}
-                  className={({ isActive }) =>
-                    `block py-4 px-3 font-display text-2xl border-b border-plum-100 transition-colors ${
-                      isActive ? 'text-gold-600' : 'text-plum-900 hover:text-gold-600'
-                    }`
-                  }
+                  to={item.href}
+                  className={`block py-4 px-5 font-display text-xl ${item.accent ? 'text-red-700' : 'text-plum-900'} hover:text-gold-600 transition-colors`}
                 >
-                  {l.label}
+                  {item.label}
                 </NavLink>
               </li>
             ))}
           </ul>
-          <div className="p-5">
+          <div className="p-5 border-t border-plum-100">
             <Link to={isAdmin ? '/admin' : '/admin/login'} className="btn-outline w-full">
               {isAdmin ? 'Admin Dashboard' : 'Admin Login'}
             </Link>
