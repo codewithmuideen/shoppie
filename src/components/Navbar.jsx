@@ -49,20 +49,12 @@ const Navbar = () => {
           </div>
 
           {/* Logo — bigger, centered */}
-          <Link to="/" className="flex items-center gap-3 group" aria-label="0528creatives inc.">
+          <Link to="/" className="flex items-center group" aria-label="0528">
             <img
-              src="/logo.png"
-              alt="0528creatives inc."
+              src="/logo.jpeg"
+              alt="0528"
               className="h-14 sm:h-16 md:h-20 w-auto transition-transform duration-500 group-hover:scale-[1.04]"
             />
-            <span className="hidden md:flex flex-col leading-none">
-              <span className="font-display text-xl lg:text-2xl font-medium text-plum-900 tracking-wide">
-                0528creatives
-              </span>
-              <span className="text-[9px] uppercase tracking-luxe text-plum-500 mt-1">
-                inc. · Curated luxury
-              </span>
-            </span>
           </Link>
 
           {/* Right — admin + search (mobile) + bag */}
@@ -112,8 +104,8 @@ const Navbar = () => {
         <aside className={`absolute left-0 top-0 h-full w-[88%] max-w-sm bg-ivory-50 shadow-2xl transition-transform duration-500 ease-silk flex flex-col ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="flex items-center justify-between p-5 border-b border-plum-100">
             <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
-              <img src="/logo.png" alt="" className="h-10 w-auto" />
-              <span className="font-display text-lg text-plum-900">0528creatives</span>
+              <img src="/logo.jpeg" alt="" className="h-10 w-auto" />
+              <span className="font-display text-lg text-plum-900">0528</span>
             </Link>
             <button onClick={closeMenu} aria-label="Close menu" className="text-plum-700 hover:text-plum-900">
               <IconClose className="w-6 h-6" />

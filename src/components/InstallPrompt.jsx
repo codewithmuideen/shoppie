@@ -57,10 +57,10 @@ const InstallPrompt = () => {
       </button>
       <div className="p-5">
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="" className="w-10 h-10 rounded-md" />
+          <img src="/logo.jpeg" alt="" className="w-10 h-10 rounded-md" />
           <div>
             <p className="eyebrow">Install the app</p>
-            <h3 className="font-display text-lg leading-tight text-plum-900">0528creatives on your home screen</h3>
+            <h3 className="font-display text-lg leading-tight text-plum-900">0528 on your home screen</h3>
           </div>
         </div>
         <p className="mt-3 text-sm text-plum-700 leading-relaxed">

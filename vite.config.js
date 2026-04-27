@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.png', 'logo.png'],
+      includeAssets: ['favicon.jpeg', 'logo.jpeg'],
       manifest: {
         name: '0528creatives inc.',
         short_name: '0528creatives',
@@ -22,10 +22,10 @@ export default defineConfig({
         lang: 'en-GB',
         categories: ['shopping', 'lifestyle', 'fashion'],
         icons: [
-          { src: '/logo.png',    sizes: '192x192', type: 'image/png', purpose: 'any' },
-          { src: '/logo.png',    sizes: '512x512', type: 'image/png', purpose: 'any' },
-          { src: '/logo.png',    sizes: '512x512', type: 'image/png', purpose: 'maskable' },
-          { src: '/favicon.png', sizes: '64x64',   type: 'image/png' }
+          { src: '/logo.jpeg',    sizes: '192x192', type: 'image/jpeg', purpose: 'any' },
+          { src: '/logo.jpeg',    sizes: '512x512', type: 'image/jpeg', purpose: 'any' },
+          { src: '/logo.jpeg',    sizes: '512x512', type: 'image/jpeg', purpose: 'maskable' },
+          { src: '/favicon.jpeg', sizes: '64x64',   type: 'image/jpeg' }
         ],
         shortcuts: [
           { name: 'Women',  short_name: 'Women',  url: '/women'  },

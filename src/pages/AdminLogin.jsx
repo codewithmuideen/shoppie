@@ -30,7 +30,7 @@ const AdminLogin = () => {
     <div className="min-h-[70vh] container-luxe py-16 grid place-items-center animate-fade-in">
       <form onSubmit={onSubmit} className="w-full max-w-md bg-ivory-50 border border-plum-100 p-10 shadow-card">
         <p className="eyebrow">Private Access</p>
-        <h1 className="mt-2 font-display text-3xl text-plum-900">0528creatives inc.</h1>
+        <h1 className="mt-2 font-display text-3xl text-plum-900">0528</h1>
         <p className="mt-3 text-sm text-plum-600">
           {isSupabaseConfigured
             ? 'Sign in to manage your store.'

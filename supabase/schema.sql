@@ -77,11 +77,15 @@ insert into storage.buckets (id, name, public)
 values ('product-images', 'product-images', true)
 on conflict (id) do nothing;
 
--- Anyone can read uploaded images
+-- NOTE: do NOT add a public SELECT policy on storage.objects for this bucket.
+-- The bucket is marked `public = true`, which means anyone can fetch a file
+-- by its exact URL (`…/object/public/product-images/…`). A SELECT policy
+-- here would also enable anonymous LISTING of every file in the bucket,
+-- which we don't want. Supabase's security advisor flags this.
+--
+-- If you previously ran an earlier version of this schema that added
+-- "product_images_read", drop it:
 drop policy if exists "product_images_read" on storage.objects;
-create policy "product_images_read"
-  on storage.objects for select
-  using (bucket_id = 'product-images');
 
 -- Authenticated users can upload / update / delete inside the bucket
 drop policy if exists "product_images_insert" on storage.objects;

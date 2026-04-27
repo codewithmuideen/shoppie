@@ -53,8 +53,8 @@ const Footer = () => (
     <div className="container-luxe py-14 grid gap-10 lg:grid-cols-[1.2fr_2fr] border-b border-plum-700/60">
       <div className="flex flex-col items-start">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="" className="h-10 w-auto" />
-          <span className="font-display text-2xl text-ivory-50">0528creatives inc.</span>
+          <img src="/logo.jpeg" alt="" className="h-10 w-auto" />
+          <span className="font-display text-2xl text-ivory-50">0528</span>
         </Link>
         <p className="mt-5 text-sm leading-relaxed text-ivory-200/80 max-w-md">
           A curated house of menswear, womenswear and kidswear - sourced from

@@ -137,10 +137,9 @@ const HeroSlider = () => {
                            ${isActive ? 'opacity-100 translate-y-0 relative' : 'opacity-0 translate-y-4 absolute inset-0 pointer-events-none'}`}
                 aria-hidden={!isActive}
               >
-                {/* Brand mark: logo + accent rule, echoing the Puma reference */}
-                <div className={`flex flex-col items-center gap-4 transition-all duration-700 ease-silk
+                {/* Slide eyebrow + gold accent rule (logo removed) */}
+                <div className={`flex flex-col items-center gap-3 transition-all duration-700 ease-silk
                                 ${isActive ? 'opacity-100 translate-y-0 delay-[250ms]' : 'opacity-0 -translate-y-2'}`}>
-                  <img src="/logo.png" alt="" className="h-8 md:h-10 w-auto opacity-95" />
                   <span className="block h-px w-10 bg-gold-500" />
                   <span className="text-[11px] md:text-xs uppercase tracking-luxe text-ivory-50/85">
                     {s.mark}
