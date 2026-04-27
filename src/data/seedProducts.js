@@ -314,14 +314,14 @@ export const seedProducts = [
 
   { id: 'k-004', name: 'Leather Mary Jane', brand: 'Corso Piccolo', category: 'kids', subcategory: 'shoes',
     description: 'Classic Mary Jane in soft nappa with buckle strap.',
-    price: 210, sizeType: 'kids', sizes: ['24','25','26','27','28','29','30','31','32'],
+    price: 210, sizeType: 'kids', sizes: SHOE_SIZES_UK,
     variants: [V('Onyx','#111111','1528701800489-20be9c1ed83a','1528701800489-20be9c1ed83a'),
                V('Blush','#e8c9c6','1543854589-fdd815f176e0','1603487742131-4160ec999306')],
     newIn: false, bestSeller: true, createdAt: '2026-03-18' },
 
   { id: 'k-005', name: 'Mini Leather Sneaker', brand: 'Corso Piccolo', category: 'kids', subcategory: 'sneakers',
     description: 'Scaled-down court sneaker with velcro closure.',
-    price: 190, sizeType: 'kids', sizes: ['24','25','26','27','28','29','30','31','32'],
+    price: 190, sizeType: 'kids', sizes: SHOE_SIZES_UK,
     variants: [V('Ivory','#faf7f2','1542291026-7eec264c27ff','1600185365926-3a2ce3cdb9eb'),
                V('Blush','#e8c9c6','1549298916-b41d501d3772','1595950653106-6c9ebd614d3a')],
     newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-22' },
@@ -377,7 +377,7 @@ export const seedProducts = [
 
   { id: 'k-013', name: 'Leather Sandal', brand: 'Corso Piccolo', category: 'kids', subcategory: 'shoes',
     description: 'Hand-stitched leather sandal with cushioned footbed.',
-    price: 130, sizeType: 'kids', sizes: ['24','25','26','27','28','29','30','31'],
+    price: 130, sizeType: 'kids', sizes: SHOE_SIZES_UK,
     variants: [V('Cognac','#8a4b2a','1614252235316-8c857d38b5f4','1449505278894-297fdb3edbc1')],
     newIn: false, createdAt: '2026-02-22' },
 

@@ -9,10 +9,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.jpeg', 'logo.jpeg'],
       manifest: {
-        name: '0528creatives inc.',
-        short_name: '0528creatives',
+        name: '0528',
+        short_name: '0528',
         description:
-          '0528creatives inc. — a curated house of premium menswear, womenswear, and kidswear. Order directly on WhatsApp.',
+          '0528 — premium menswear, womenswear and kidswear. Order directly on WhatsApp.',
         start_url: '/',
         scope: '/',
         display: 'standalone',
