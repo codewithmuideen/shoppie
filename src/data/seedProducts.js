@@ -29,7 +29,12 @@ const LOCAL = [
 const L = (i) => (LOCAL[i] || []).map((f) => `/${f}`)
 
 export const CLOTHING_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
-export const SHOE_SIZES_EU = ['39', '40', '41', '42', '43', '44', '45']
+// UK shoe sizes (adults). Used for both men's and women's footwear.
+export const SHOE_SIZES_UK = [
+  '5.5','6','6.5','7','7.5','8','8.5','9','9.5','10','10.5','11','11.5','12','12.5'
+]
+// Backwards-compatible alias so older imports still work.
+export const SHOE_SIZES_EU = SHOE_SIZES_UK
 export const KID_SIZES = ['2Y', '4Y', '6Y', '8Y', '10Y', '12Y']
 
 export const COLOR_PALETTE = [
@@ -242,7 +247,7 @@ export const seedProducts = [
   // ============ WOMEN — Shoes ============
   { id: 'w-011', name: 'Leather Heeled Mule', brand: 'Corso Veneto', category: 'women', subcategory: 'shoes',
     description: 'Sculpted 80mm heeled mule in nappa leather.',
-    price: 560, sizeType: 'shoes', sizes: ['36','37','38','39','40','41'],
+    price: 560, sizeType: 'shoes', sizes: SHOE_SIZES_UK,
     variants: [V('Gold','#c9a961','1543163521-1bf539c55dd2','1515347619252-60a4bf4fff4f'),
                V('Onyx','#111111','1596947395852-c5f50d45f2b2','1560769629-975ec94e6a86'),
                V('Blush','#e8c9c6','1582588678413-dbf45f4823e9','1513094735237-8f2714d57c13')],
@@ -250,14 +255,14 @@ export const seedProducts = [
 
   { id: 'w-012', name: 'Platform Leather Sneaker', brand: '0528creatives Inc.', category: 'women', subcategory: 'sneakers',
     description: 'Ivory nappa platform sneaker with a tonal sole.',
-    price: 510, sizeType: 'shoes', sizes: ['36','37','38','39','40','41'],
+    price: 510, sizeType: 'shoes', sizes: SHOE_SIZES_UK,
     variants: [V('Ivory','#faf7f2','1600185365926-3a2ce3cdb9eb','1542291026-7eec264c27ff'),
                V('Blush','#e8c9c6','1595950653106-6c9ebd614d3a','1549298916-b41d501d3772')],
     newIn: true, bestSeller: true, createdAt: '2026-04-22' },
 
   { id: 'w-013', name: 'Heeled Ankle Boot', brand: 'Corso Veneto', category: 'women', subcategory: 'shoes',
     description: 'Pointed-toe ankle boot with a 60mm stack heel.',
-    price: 690, sizeType: 'shoes', sizes: ['36','37','38','39','40','41'],
+    price: 690, sizeType: 'shoes', sizes: SHOE_SIZES_UK,
     variants: [V('Onyx','#111111','1533867617858-e7b97e060509','1520639888713-7851133b1ed0'),
                V('Cognac','#8a4b2a','1614252235316-8c857d38b5f4','1449505278894-297fdb3edbc1')],
     newIn: false, featured: true, bestSeller: true, createdAt: '2026-01-28' },

@@ -153,7 +153,7 @@ const ProductForm = ({ initial, onSave, onCancel }) => {
                      onChange={(e) => set({ brand: e.target.value })} placeholder="0528creatives Inc." />
             </div>
             <div>
-              <label className="eyebrow">Price (USD)</label>
+              <label className="eyebrow">Price (GBP £)</label>
               <input type="number" min="0" step="1" className="input-luxe mt-1" value={p.price}
                      onChange={(e) => set({ price: +e.target.value })} />
             </div>

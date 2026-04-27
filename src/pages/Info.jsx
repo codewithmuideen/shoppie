@@ -22,7 +22,7 @@ const INFO = {
       ['How do I place an order?', 'Everything goes through WhatsApp. Pick the piece, colour and size — then tap "Order on WhatsApp". The message is pre-filled; just send it.'],
       ['Do you ship worldwide?', 'Yes. Dispatch is included on every order.'],
       ['How long does delivery take?', 'Typically 3–7 working days, depending on destination.'],
-      ['What currency are prices in?', 'Prices display in USD. We accept payment in local currency at checkout.'],
+      ['What currency are prices in?', 'Prices display in GBP (£). We accept payment in local currency at checkout.'],
       ['Can I return an item?', 'Yes — unworn, within 14 days. Reach out on WhatsApp and we\'ll arrange pickup.'],
       ['Do you offer size guides?', 'Yes, each product has a size-guide link. Or ask us on WhatsApp for personalised sizing help.']
     ]
@@ -33,7 +33,7 @@ const INFO = {
     body: [
       'Orders are confirmed on WhatsApp. Once payment is received, your piece is dispatched from the nearest 0528creatives Inc. within 24 hours.',
       'Tracking links are shared in the same WhatsApp thread — no separate email.',
-      'Signature is required on delivery for orders above $500.'
+      'Signature is required on delivery for orders above £500.'
     ]
   },
   'returns-refunds': {
@@ -49,7 +49,7 @@ const INFO = {
     title: 'Payment and pricing',
     eyebrow: 'Customer Service',
     body: [
-      'All prices shown in USD. Taxes and worldwide dispatch are included in the listed price.',
+      'All prices shown in GBP (£). Taxes and worldwide dispatch are included in the listed price.',
       'We accept bank transfer, credit card, and cryptocurrency. Payment details are shared over WhatsApp after you confirm your order.',
       'Prices are updated in line with exchange rates and may change without notice.'
     ]
@@ -166,7 +166,7 @@ const INFO = {
     title: 'Refer a friend',
     eyebrow: 'Discounts and membership',
     body: [
-      'You and a friend each get $50 off your next order over $300.',
+      'You and a friend each get £50 off your next order over £300.',
       'Ask us on WhatsApp for your personal referral code.'
     ]
   },

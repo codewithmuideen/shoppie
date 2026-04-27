@@ -24,8 +24,8 @@ const PriceSlider = ({ value, onChange }) => {
   return (
     <div>
       <div className="flex items-center justify-between text-sm text-plum-800 mb-3">
-        <span>${min}</span>
-        <span>${max === 5000 ? '5000+' : max}</span>
+        <span>£{min}</span>
+        <span>£{max === 5000 ? '5000+' : max}</span>
       </div>
       <div className="relative h-6">
         <div className="absolute inset-x-0 top-1/2 h-px bg-plum-200" />
@@ -59,7 +59,7 @@ const PriceSlider = ({ value, onChange }) => {
             onClick={() => onChange([lo, hi])}
             className={`chip ${min === lo && max === hi ? 'chip-active' : ''}`}
           >
-            ${lo}{hi === 5000 ? '+' : `–$${hi}`}
+            £{lo}{hi === 5000 ? '+' : `–£${hi}`}
           </button>
         ))}
       </div>
