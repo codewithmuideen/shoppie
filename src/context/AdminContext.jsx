@@ -5,7 +5,7 @@ const SESSION_KEY = 'maison.admin.session.v1'
 // Legacy fallback when Supabase isn't configured yet. Override in .env via
 // VITE_ADMIN_PASSWORD.
 const LEGACY_PASSWORD =
-  import.meta.env.VITE_ADMIN_PASSWORD || 'maison2026'
+  import.meta.env.VITE_ADMIN_PASSWORD || 'Awesome@228'
 
 const AdminCtx = createContext(null)
 

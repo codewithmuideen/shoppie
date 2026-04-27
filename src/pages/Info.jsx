@@ -31,7 +31,7 @@ const INFO = {
     title: 'Orders and delivery',
     eyebrow: 'Customer Service',
     body: [
-      'Orders are confirmed on WhatsApp. Once payment is received, your piece is dispatched from the nearest atelier within 24 hours.',
+      'Orders are confirmed on WhatsApp. Once payment is received, your piece is dispatched from the nearest 0528creatives Inc. within 24 hours.',
       'Tracking links are shared in the same WhatsApp thread — no separate email.',
       'Signature is required on delivery for orders above $500.'
     ]
@@ -87,7 +87,7 @@ const INFO = {
     title: 'About us',
     eyebrow: 'The House',
     body: [
-      '0528creatives inc. is an independent house curating menswear, womenswear and kidswear from a tight roster of ateliers we trust.',
+      '0528creatives inc. is an independent house curating menswear, womenswear and kidswear from a tight roster of 0528creatives Inc. we trust.',
       'We exist so you can buy fewer, better things — and talk to a real person when you do.',
       'Registered in London. Dispatch from London, Milan and Paris.'
     ]
@@ -96,7 +96,7 @@ const INFO = {
     title: 'Partner boutiques',
     eyebrow: 'The House',
     body: [
-      'We partner with a small roster of independent boutiques: Atelier Nord (Oslo), Corso Veneto (Milan), Rue Sainte (Paris), Riva Moda (Lake Como), and our in-house label 0528 Atelier.',
+      'We partner with a small roster of independent boutiques: 0528creatives Inc. Nord (Oslo), Corso Veneto (Milan), Rue Sainte (Paris), Riva Moda (Lake Como), and our in-house label 0528creatives Inc..',
       'Every partner meets our standards for provenance, craft and ethical labour. We visit each one before onboarding.'
     ]
   },
@@ -199,7 +199,7 @@ const INFO = {
     title: 'Fashion Feed',
     eyebrow: 'Content and services',
     body: [
-      'A small monthly dispatch with the pieces we\'re wearing, the ateliers we\'re visiting, and the stories behind the collections.',
+      'A small monthly dispatch with the pieces we\'re wearing, the 0528creatives Inc. we\'re visiting, and the stories behind the collections.',
       'No discount spam — once a month, read in five minutes.',
       'Ask us on WhatsApp to be added.'
     ]

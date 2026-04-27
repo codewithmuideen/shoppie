@@ -57,13 +57,13 @@ const V = (color, hex, ...ids) => ({ color, hex, images: ids.map((id) => U(id)) 
 // In-house labels use the 0528 prefix. Third-party labels stay varied.
 export const seedProducts = [
   // ============ MEN — Outerwear ============
-  { id: 'm-001', name: 'Tailored Wool Overcoat', brand: '0528 Atelier', category: 'men', subcategory: 'outerwear',
+  { id: 'm-001', name: 'Tailored Wool Overcoat', brand: '0528creatives Inc.', category: 'men', subcategory: 'outerwear',
     description: 'Sculpted single-breasted overcoat in Italian virgin wool. Half-canvassed, horn buttons.',
     price: 1280, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [Vlocal('Onyx','#111111', 0), Vlocal('Cognac','#8a4b2a', 1)],
     newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-10' },
 
-  { id: 'm-002', name: 'Belted Trench Coat', brand: 'Atelier Nord', category: 'men', subcategory: 'outerwear',
+  { id: 'm-002', name: 'Belted Trench Coat', brand: '0528creatives Inc. Nord', category: 'men', subcategory: 'outerwear',
     description: 'Waxed cotton trench with storm shield and tonal belt.',
     price: 980, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [Vlocal('Camel','#b58a58', 2), Vlocal('Onyx','#111111', 3)],
@@ -76,13 +76,13 @@ export const seedProducts = [
     newIn: false, bestSeller: true, createdAt: '2026-02-28' },
 
   // ============ MEN — Shirts ============
-  { id: 'm-004', name: 'Silk-Blend Camp Shirt', brand: 'Atelier Nord', category: 'men', subcategory: 'shirts',
+  { id: 'm-004', name: 'Silk-Blend Camp Shirt', brand: '0528creatives Inc. Nord', category: 'men', subcategory: 'shirts',
     description: 'Silk-cotton with camp collar and mother-of-pearl buttons.',
     price: 420, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [Vlocal('Ivory','#faf7f2', 5), Vlocal('Navy','#1b2a4e', 6)],
     newIn: true, featured: true, createdAt: '2026-04-12' },
 
-  { id: 'm-005', name: 'Crisp Poplin Shirt', brand: '0528 Atelier', category: 'men', subcategory: 'shirts',
+  { id: 'm-005', name: 'Crisp Poplin Shirt', brand: '0528creatives Inc.', category: 'men', subcategory: 'shirts',
     description: 'Long-staple cotton poplin, spread collar, double cuff.',
     price: 260, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [Vlocal('Ivory','#faf7f2', 7), Vlocal('Plum','#2a1437', 8)],
@@ -95,13 +95,13 @@ export const seedProducts = [
     newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-21' },
 
   // ============ MEN — Knitwear ============
-  { id: 'm-007', name: 'Cashmere Crewneck', brand: '0528 Atelier', category: 'men', subcategory: 'knitwear',
+  { id: 'm-007', name: 'Cashmere Crewneck', brand: '0528creatives Inc.', category: 'men', subcategory: 'knitwear',
     description: 'Ultra-fine Mongolian cashmere in a refined crew silhouette.',
     price: 520, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [Vlocal('Plum','#2a1437', 11), Vlocal('Sand','#c9b59a', 12), Vlocal('Forest','#2f4a3a', 13)],
     newIn: false, bestSeller: true, createdAt: '2026-03-15' },
 
-  { id: 'm-008', name: 'Ribbed Merino Polo', brand: 'Atelier Nord', category: 'men', subcategory: 'knitwear',
+  { id: 'm-008', name: 'Ribbed Merino Polo', brand: '0528creatives Inc. Nord', category: 'men', subcategory: 'knitwear',
     description: 'Fine-gauge merino, half-zip collar.',
     price: 290, sizeType: 'clothing', sizes: ['S','M','L','XL'],
     variants: [V('Ivory','#faf7f2','1516826957135-700dedea698c','1539109136881-3be0616acf4b'),
@@ -109,7 +109,7 @@ export const seedProducts = [
     newIn: false, featured: true, bestSeller: true, createdAt: '2026-02-05' },
 
   // ============ MEN — Trousers & Denim ============
-  { id: 'm-009', name: 'Pleated Wool Trouser', brand: 'Atelier Nord', category: 'men', subcategory: 'trousers',
+  { id: 'm-009', name: 'Pleated Wool Trouser', brand: '0528creatives Inc. Nord', category: 'men', subcategory: 'trousers',
     description: 'High-rise pleated trouser in Japanese wool twill.',
     price: 390, sizeType: 'clothing', sizes: ['S','M','L','XL','XXL'],
     variants: [V('Onyx','#111111','1594633312681-425c7b97ccd1','1473966968600-fa801b869a1a'),
@@ -137,14 +137,14 @@ export const seedProducts = [
                V('Onyx','#111111','1520639888713-7851133b1ed0','1533867617858-e7b97e060509')],
     newIn: false, featured: true, createdAt: '2026-03-28' },
 
-  { id: 'm-013', name: 'Court Leather Sneaker', brand: '0528 Atelier', category: 'men', subcategory: 'sneakers',
+  { id: 'm-013', name: 'Court Leather Sneaker', brand: '0528creatives Inc.', category: 'men', subcategory: 'sneakers',
     description: 'Minimal court sneaker in Italian nappa with a tonal rubber sole.',
     price: 480, sizeType: 'shoes', sizes: SHOE_SIZES_EU,
     variants: [V('Ivory','#faf7f2','1542291026-7eec264c27ff','1600185365926-3a2ce3cdb9eb'),
                V('Onyx','#111111','1600269452121-4f2416e55c28','1549298916-b41d501d3772')],
     newIn: true, bestSeller: true, createdAt: '2026-04-22' },
 
-  { id: 'm-014', name: 'Runner Low Sneaker', brand: 'Atelier Nord', category: 'men', subcategory: 'sneakers',
+  { id: 'm-014', name: 'Runner Low Sneaker', brand: '0528creatives Inc. Nord', category: 'men', subcategory: 'sneakers',
     description: 'Technical runner with suede overlays and cushioned midsole.',
     price: 520, sizeType: 'shoes', sizes: SHOE_SIZES_EU,
     variants: [V('Sand','#c9b59a','1595950653106-6c9ebd614d3a','1542291026-7eec264c27ff'),
@@ -152,7 +152,7 @@ export const seedProducts = [
     newIn: true, featured: true, createdAt: '2026-04-17' },
 
   // ============ MEN — Bags & Accessories ============
-  { id: 'm-015', name: 'Leather Weekender', brand: '0528 Atelier', category: 'men', subcategory: 'bags',
+  { id: 'm-015', name: 'Leather Weekender', brand: '0528creatives Inc.', category: 'men', subcategory: 'bags',
     description: 'Vegetable-tanned leather weekender with brass hardware.',
     price: 1180, sizeType: 'clothing', sizes: ['One Size'],
     variants: [V('Cognac','#8a4b2a','1590874103328-eac38a683ce7','1548036328-c9fa89d128fa'),
@@ -167,7 +167,7 @@ export const seedProducts = [
     newIn: false, bestSeller: true, createdAt: '2026-02-20' },
 
   // ============ WOMEN — Dresses ============
-  { id: 'w-001', name: 'Draped Silk Gown', brand: '0528 Atelier', category: 'women', subcategory: 'dresses',
+  { id: 'w-001', name: 'Draped Silk Gown', brand: '0528creatives Inc.', category: 'women', subcategory: 'dresses',
     description: 'Floor-grazing silk with bias cut and cowl neckline.',
     price: 1480, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Plum','#2a1437','1539533018447-63fcce2678e3','1502716119720-b23a93e5fe1b'),
@@ -196,7 +196,7 @@ export const seedProducts = [
                V('Onyx','#111111','1548624313-0396c75e4b1a','1594223274512-ad4803739b7c')],
     newIn: true, featured: true, createdAt: '2026-04-14' },
 
-  { id: 'w-005', name: 'Belted Wool Coat', brand: '0528 Atelier', category: 'women', subcategory: 'outerwear',
+  { id: 'w-005', name: 'Belted Wool Coat', brand: '0528creatives Inc.', category: 'women', subcategory: 'outerwear',
     description: 'Longline wool coat with tortoise-shell buttons.',
     price: 1180, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Camel','#b58a58','1539533018447-63fcce2678e3','1591369822096-ffd140ec948f'),
@@ -204,14 +204,14 @@ export const seedProducts = [
     newIn: false, bestSeller: true, createdAt: '2026-02-10' },
 
   // ============ WOMEN — Knitwear ============
-  { id: 'w-006', name: 'Cashmere Wrap Cardigan', brand: '0528 Atelier', category: 'women', subcategory: 'knitwear',
+  { id: 'w-006', name: 'Cashmere Wrap Cardigan', brand: '0528creatives Inc.', category: 'women', subcategory: 'knitwear',
     description: 'Oversized wrap cardigan in brushed cashmere.',
     price: 640, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Sand','#c9b59a','1576995853123-5a10305d93c0','1525507119028-ed4c629a60a3'),
                V('Blush','#e8c9c6','1520975916090-3105956dac38','1581338834647-b0fb40704e21')],
     newIn: false, createdAt: '2026-03-05' },
 
-  { id: 'w-007', name: 'Fine-Gauge Rollneck', brand: 'Atelier Nord', category: 'women', subcategory: 'knitwear',
+  { id: 'w-007', name: 'Fine-Gauge Rollneck', brand: '0528creatives Inc. Nord', category: 'women', subcategory: 'knitwear',
     description: 'Second-skin merino rollneck.',
     price: 310, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Ivory','#faf7f2','1516826957135-700dedea698c','1539109136881-3be0616acf4b'),
@@ -233,7 +233,7 @@ export const seedProducts = [
                V('Ivory','#faf7f2','1475178626620-a4d074967452','1604176354204-9268737828e4')],
     newIn: true, featured: true, bestSeller: true, createdAt: '2026-04-21' },
 
-  { id: 'w-010', name: 'Organic Cotton Shirt', brand: 'Atelier Nord', category: 'women', subcategory: 'shirts',
+  { id: 'w-010', name: 'Organic Cotton Shirt', brand: '0528creatives Inc. Nord', category: 'women', subcategory: 'shirts',
     description: 'Relaxed organic cotton shirt with a concealed placket.',
     price: 290, sizeType: 'clothing', sizes: ['XS','S','M','L'],
     variants: [V('Ivory','#faf7f2','1598971457999-ca4ef48a9a88','1602810318383-e386cc2a3ccf')],
@@ -248,7 +248,7 @@ export const seedProducts = [
                V('Blush','#e8c9c6','1582588678413-dbf45f4823e9','1513094735237-8f2714d57c13')],
     newIn: false, featured: true, createdAt: '2026-03-20' },
 
-  { id: 'w-012', name: 'Platform Leather Sneaker', brand: '0528 Atelier', category: 'women', subcategory: 'sneakers',
+  { id: 'w-012', name: 'Platform Leather Sneaker', brand: '0528creatives Inc.', category: 'women', subcategory: 'sneakers',
     description: 'Ivory nappa platform sneaker with a tonal sole.',
     price: 510, sizeType: 'shoes', sizes: ['36','37','38','39','40','41'],
     variants: [V('Ivory','#faf7f2','1600185365926-3a2ce3cdb9eb','1542291026-7eec264c27ff'),
@@ -263,7 +263,7 @@ export const seedProducts = [
     newIn: false, featured: true, bestSeller: true, createdAt: '2026-01-28' },
 
   // ============ WOMEN — Bags ============
-  { id: 'w-014', name: 'Monogram Leather Tote', brand: '0528 Atelier', category: 'women', subcategory: 'bags',
+  { id: 'w-014', name: 'Monogram Leather Tote', brand: '0528creatives Inc.', category: 'women', subcategory: 'bags',
     description: 'Hand-finished calfskin tote with signature gilt hardware.',
     price: 1180, sizeType: 'clothing', sizes: ['One Size'],
     variants: [V('Cognac','#8a4b2a','1584917865442-de89df76afd3','1548036328-c9fa89d128fa'),
@@ -300,7 +300,7 @@ export const seedProducts = [
                V('Plum','#2a1437','1553395572-0ef353a212bc','1519689680058-324335c77eba')],
     newIn: true, featured: true, createdAt: '2026-04-22' },
 
-  { id: 'k-003', name: 'Quilted Padded Jacket', brand: 'Atelier Nord Kids', category: 'kids', subcategory: 'outerwear',
+  { id: 'k-003', name: 'Quilted Padded Jacket', brand: '0528creatives Inc. Nord Kids', category: 'kids', subcategory: 'outerwear',
     description: 'Feather-light quilted jacket with a detachable hood.',
     price: 240, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Forest','#2f4a3a','1519689680058-324335c77eba','1503454537195-1dcabb73ffb9'),
@@ -328,7 +328,7 @@ export const seedProducts = [
                V('Forest','#2f4a3a','1519689680058-324335c77eba','1503944583220-79d8926ad5e2')],
     newIn: true, featured: true, createdAt: '2026-04-22' },
 
-  { id: 'k-007', name: 'Cotton Polo Shirt', brand: 'Atelier Nord Kids', category: 'kids', subcategory: 'shirts',
+  { id: 'k-007', name: 'Cotton Polo Shirt', brand: '0528creatives Inc. Nord Kids', category: 'kids', subcategory: 'shirts',
     description: 'Piqué cotton polo with mother-of-pearl buttons.',
     price: 95, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Ivory','#faf7f2','1519689373023-dd07c7988603','1518831959646-742c3a14ebf7'),
@@ -363,7 +363,7 @@ export const seedProducts = [
                V('Blush','#e8c9c6','1566150905458-1bf1fc113f0d','1590874103328-eac38a683ce7')],
     newIn: true, createdAt: '2026-04-18' },
 
-  { id: 'k-012', name: 'Hooded Cotton Sweatshirt', brand: 'Atelier Nord Kids', category: 'kids', subcategory: 'knitwear',
+  { id: 'k-012', name: 'Hooded Cotton Sweatshirt', brand: '0528creatives Inc. Nord Kids', category: 'kids', subcategory: 'knitwear',
     description: 'Heavyweight cotton hoodie with tonal drawstrings.',
     price: 130, sizeType: 'kids', sizes: KID_SIZES,
     variants: [V('Plum','#2a1437','1519689680058-324335c77eba','1553395572-0ef353a212bc'),

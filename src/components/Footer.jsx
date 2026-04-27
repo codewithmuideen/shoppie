@@ -57,8 +57,8 @@ const Footer = () => (
           <span className="font-display text-2xl text-ivory-50">0528creatives inc.</span>
         </Link>
         <p className="mt-5 text-sm leading-relaxed text-ivory-200/80 max-w-md">
-          A curated house of menswear, womenswear and kidswear — sourced from
-          independent ateliers and heritage labels. Every piece hand-selected and
+          A curated house of menswear, womenswear and kidswear - sourced from
+          independent labels and heritage houses. Every piece hand-selected and
           dispatched worldwide.
         </p>
         <a
@@ -76,7 +76,7 @@ const Footer = () => (
       <div className="bg-plum-800/60 border border-plum-700/60 p-6 md:p-8">
         <p className="eyebrow text-gold-400">Need help?</p>
         <h3 className="mt-2 font-display text-3xl text-ivory-50 leading-tight">
-          Questions, sizing, stock — <span className="italic text-gold-400">just message us.</span>
+          Questions, sizing, stock - <span className="italic text-gold-400">just message us.</span>
         </h3>
         <p className="mt-3 text-sm text-ivory-200/80 max-w-lg">
           A real person replies, usually within the hour (Mon–Sat, 9am–8pm GMT).
@@ -142,7 +142,7 @@ const Footer = () => (
     <div className="border-t border-plum-700/60">
       <div className="container-luxe py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-ivory-200/60 tracking-wide">
         <p>© {new Date().getFullYear()} 0528creatives inc. All rights reserved.</p>
-        <p className="uppercase tracking-luxe text-[10px]">Made with intention · London · Milan · Paris</p>
+        <p className="uppercase tracking-luxe text-[10px]">Powered by 0528Creatives Inc.</p>
       </div>
     </div>
   </footer>

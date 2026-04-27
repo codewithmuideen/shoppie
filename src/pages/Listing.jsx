@@ -17,7 +17,7 @@ const COPY_BY_SLUG = {
   'new-in':       { eyebrow: 'Just Arrived',  title: 'New in this week.',     sub: 'The freshest additions to the house.' },
   'sale':         { eyebrow: 'Sale',          title: 'The Sale Edit.',         sub: 'Hand-selected pieces, generously reduced.' },
   'best-sellers': { eyebrow: 'This Week',     title: 'Best sellers.',          sub: 'The pieces flying out the door.' },
-  'brands':       { eyebrow: 'Maisons',       title: 'Shop by brand.',         sub: 'Independent ateliers and heritage labels.' },
+  'brands':       { eyebrow: 'Brands',        title: 'Shop by brand.',         sub: 'Independent labels and heritage houses.' },
   'clothing':     { eyebrow: 'Clothing',      title: 'All clothing.',          sub: 'Tailoring, knitwear, dresses and beyond.' },
   'shoes':        { eyebrow: 'Shoes',         title: 'All shoes.',             sub: 'Italian leather, hand-finished soles.' },
   'sneakers':     { eyebrow: 'Sneakers',      title: 'The sneaker edit.',      sub: 'Court, runner and platform — quietly cut.' },
@@ -39,7 +39,7 @@ const COPY_BY_SLUG = {
 }
 
 const COPY_BY_CAT = {
-  women: { eyebrow: 'Womenswear', title: 'Elegance, tailored.',  sub: 'From slow-fashion ateliers and heritage houses.' },
+  women: { eyebrow: 'Womenswear', title: 'Elegance, tailored.',  sub: 'From slow-fashion 0528creatives Inc. and heritage houses.' },
   men:   { eyebrow: 'Menswear',   title: 'Understated craft.',   sub: 'Tailoring, knitwear and leather worth keeping.' },
   kids:  { eyebrow: 'Kidswear',   title: 'Petite, considered.',  sub: 'Heirloom-grade pieces made to be passed on.' }
 }

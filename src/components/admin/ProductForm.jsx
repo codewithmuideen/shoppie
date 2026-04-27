@@ -148,9 +148,9 @@ const ProductForm = ({ initial, onSave, onCancel }) => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="eyebrow">Brand / Atelier</label>
+              <label className="eyebrow">Brand / 0528creatives Inc.</label>
               <input className="input-luxe mt-1" value={p.brand}
-                     onChange={(e) => set({ brand: e.target.value })} placeholder="0528 Atelier" />
+                     onChange={(e) => set({ brand: e.target.value })} placeholder="0528creatives Inc." />
             </div>
             <div>
               <label className="eyebrow">Price (USD)</label>

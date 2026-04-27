@@ -30,11 +30,11 @@ const AdminLogin = () => {
     <div className="min-h-[70vh] container-luxe py-16 grid place-items-center animate-fade-in">
       <form onSubmit={onSubmit} className="w-full max-w-md bg-ivory-50 border border-plum-100 p-10 shadow-card">
         <p className="eyebrow">Private Access</p>
-        <h1 className="mt-2 font-display text-3xl text-plum-900">Atelier console</h1>
+        <h1 className="mt-2 font-display text-3xl text-plum-900">0528creatives inc.</h1>
         <p className="mt-3 text-sm text-plum-600">
           {isSupabaseConfigured
-            ? 'Sign in with the admin account you set up in Supabase.'
-            : 'Enter the house passphrase to manage the collection.'}
+            ? 'Sign in to manage your store.'
+            : 'Enter your password to manage your store.'}
         </p>
 
         {isSupabaseConfigured && (
@@ -66,11 +66,6 @@ const AdminLogin = () => {
           <IconArrow className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
         </button>
 
-        {!isSupabaseConfigured && (
-          <p className="mt-6 text-[11px] text-plum-500">
-            Demo passphrase: <span className="font-mono text-plum-800">maison2026</span>
-          </p>
-        )}
       </form>
     </div>
   )

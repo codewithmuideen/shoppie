@@ -52,7 +52,7 @@ const slides = [
     mark: 'Just Arrived',
     title: ['New in', 'this week.'],
     accent: 'this week.',
-    sub: 'Fresh from the ateliers — tailoring, knitwear, shoes and bags.',
+    sub: 'Fresh from the 0528creatives Inc. — tailoring, knitwear, shoes and bags.',
     cta: { to: '/new-in', label: 'Shop New In' },
     image: U('1515562141207-7a88fb7ce338'),
     focal: '50% 50%'

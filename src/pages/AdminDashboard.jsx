@@ -50,8 +50,8 @@ const AdminDashboard = () => {
       {/* Header */}
       <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
         <div>
-          <p className="eyebrow">Atelier Console</p>
-          <h1 className="mt-1 font-display text-4xl text-plum-900">Manage the house</h1>
+          <p className="eyebrow">Admin</p>
+          <h1 className="mt-1 font-display text-4xl text-plum-900">0528creatives inc.</h1>
         </div>
         <div className="flex items-center gap-2">
           <button onClick={resetToSeed}

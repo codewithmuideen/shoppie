@@ -27,7 +27,7 @@ const Home = () => {
         <div className="flex gap-12 animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, k) => (
             <div key={k} className="flex gap-12 items-center">
-              {['Worldwide Dispatch Included',  'Order on WhatsApp',  'Hand-Selected Ateliers',  'Authenticity Guaranteed',  '14-Day Returns'].map((t, i) => (
+              {['Worldwide Dispatch Included',  'Order on WhatsApp',  'Hand-Selected Labels',  'Authenticity Guaranteed',  '14-Day Returns'].map((t, i) => (
                 <span key={`${k}-${i}`} className="flex items-center gap-12">
                   <span className="text-[11px] uppercase tracking-luxe">{t}</span>
                   <span className="w-1 h-1 rounded-full bg-gold-500" />
@@ -42,13 +42,13 @@ const Home = () => {
       <section className="container-luxe py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="eyebrow">The House</p>
-          <h2 className="mt-3 font-display text-4xl md:text-5xl text-plum-900">Shop by atelier</h2>
+          <h2 className="mt-3 font-display text-4xl md:text-5xl text-plum-900">Shop by category</h2>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
           {[
-            { to: '/women', label: 'Women', img: U('1490481651871-ab68de25d43d', 1000),
+            { to: '/women', label: 'Women', img: '/women.jpeg',
               copy: 'Elegance, tailored' },
-            { to: '/men',   label: 'Men',   img: U('1617137968427-85924c800a22', 1000),
+            { to: '/men',   label: 'Men',   img: '/men.jpeg',
               copy: 'Understated craft' },
             { to: '/kids',  label: 'Kids',  img: U('1503944583220-79d8926ad5e2', 1000),
               copy: 'Petite, considered' }

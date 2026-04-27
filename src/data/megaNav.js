@@ -40,15 +40,15 @@ export const MEGA_NAV = [
     href: '/shop/brands',
     columns: [
       { title: 'Iconic Brands', links: [
-        { label: '0528 Atelier',     to: '/shop/brand/0528-atelier'   },
+        { label: '0528creatives Inc.',     to: '/shop/brand/0528creatives-inc'   },
         { label: '0528 Petite',      to: '/shop/brand/0528-petite'    },
-        { label: 'Atelier Nord',     to: '/shop/brand/atelier-nord'   },
+        { label: '0528creatives Inc. Nord',     to: '/shop/brand/0528creatives-inc-nord'   },
         { label: 'Corso Veneto',     to: '/shop/brand/corso-veneto'   },
         { label: 'Rue Sainte',       to: '/shop/brand/rue-sainte'     },
         { label: 'Riva Moda',        to: '/shop/brand/riva-moda'      }
       ]},
       { title: 'Contemporary Brands', links: [
-        { label: 'Atelier Nord Kids',to: '/shop/brand/atelier-nord-kids' },
+        { label: '0528creatives Inc. Nord Kids',to: '/shop/brand/0528creatives-inc-nord-kids' },
         { label: 'Corso Piccolo',    to: '/shop/brand/corso-piccolo'  },
         { label: 'Riva Piccola',     to: '/shop/brand/riva-piccola'   }
       ]}
